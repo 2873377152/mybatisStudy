@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tz.dao.UserMapper">
+    <!--根据id查询用户-->
+
+<!--属性名和字段名不一致;第一种方法: psw as password -->
+<!--    <select id="getUserById" parameterType="int" resultType="com.tz.pojo.User">-->
+<!--        select id,name ,psw as password from users where id=#{id}-->
+<!--    </select>-->
+   <resultMap id="userMap" type="User">
+<!--       <result column="id" property="id"/>-->
+<!--       <result column="name" property="name"/>-->
+       <result column="psw" property="password"/>
+
+   </resultMap>
+    <select id="getUserById" resultMap="userMap">
+        select *from users where id=#{id};
+    </select>
+
+<!--    &lt;!&ndash;    查询所有用户&ndash;&gt;-->
+<!--    <select id="getUserList" resultType="user">-->
+<!--        select * from  users ;-->
+<!--    </select>-->
+<!--    &lt;!&ndash;添加一个用户&ndash;&gt;-->
+<!--    <insert id="addUser" parameterType="com.tz.pojo.User">-->
+<!--        insert into users (id,name,psw) values(#{id},#{name},#{psw});-->
+<!--    </insert>-->
+
+
+<!--    &lt;!&ndash;更新数据&ndash;&gt;-->
+<!--    <update id="updateUser" parameterType="com.tz.pojo.User">-->
+<!--        update users set name=#{name},psw=#{psw} where id= #{id};-->
+<!--    </update>-->
+<!--    &lt;!&ndash;删除数据&ndash;&gt;-->
+<!--    <delete id="deleteUser" parameterType="int">-->
+<!--        delete from users where id= #{id};-->
+<!--    </delete>-->
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
